@@ -10,12 +10,13 @@ jobs:
   install_poetry:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-
-    - name: Set up Python 3.8
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.8
-    
-    - name: Install Poetry
-      run: Gr1N/setup-poetry@v4
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+          
+      - uses: Gr1N/setup-poetry@v7
+        with:
+          poetry-preview: true
+            
+      - run: poetry --version
