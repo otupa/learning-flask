@@ -45,5 +45,17 @@ jobs:
       - run: poetry install
       - run: poetry run black --check .
       - run: poetry run isort --check .
+      
+  lynting:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+          
+      - uses: Gr1N/setup-poetry@v7
+      - run: poetry install
+      - run: poetry run pylint
     
 
