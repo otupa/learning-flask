@@ -56,6 +56,6 @@ jobs:
           
       - uses: Gr1N/setup-poetry@v7
       - run: poetry install
-      - run: poetry run pylint --check . 
+      - run: poetry run pylint **/*.py
     
 
