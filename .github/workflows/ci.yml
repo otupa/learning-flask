@@ -42,6 +42,10 @@ jobs:
           python-version: 3.8
           
       - uses: Gr1N/setup-poetry@v7
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pypoetry/virtualenvs
+          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
       - run: poetry install
       - run: poetry run black --check .
       - run: poetry run isort --check .
@@ -55,6 +59,10 @@ jobs:
           python-version: 3.8
           
       - uses: Gr1N/setup-poetry@v7
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pypoetry/virtualenvs
+          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
       - run: poetry install
       - run: poetry run pylint **/*.py
     
@@ -68,5 +76,9 @@ jobs:
           python-version: 3.8
           
       - uses: Gr1N/setup-poetry@v7
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pypoetry/virtualenvs
+          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
       - run: poetry install
       - run: poetry run pytest
